@@ -4,6 +4,8 @@
 
 1. traditional class component: chapter1_1 
 1. using Hooks instead ( function component ): chapter1_2
+1. Check out the following video to see the code in  action:
+http://bit.ly/2Mm9yoC
 1. Comparison
 
 Class component
@@ -58,5 +60,4 @@ function MyName () {
 
 export default MyName
 ```
-3. Check out the following video to see the code in  action:
-http://bit.ly/2Mm9yoC
+

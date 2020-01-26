@@ -7,3 +7,45 @@ https://www.youtube.com/watch?v=ZAq-WHcXwHA&list=PLeLcvrwLe187GQf0pQTtWTpppdjSAO
 
 
 
+## for windows running
+
+```json
+{
+  "name": "chapter7_3",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@use-hooks/axios": "^1.3.1",
+    "axios": "^0.19.2",
+    "concurrently": "^5.0.2",
+    "http-proxy-middleware": "^0.20.0",
+    "json-server": "^0.15.1",
+    "navi": "^0.14.0",
+    "react": "^16.12.0",
+    "react-busy-indicator": "^1.0.0",
+    "react-dom": "^16.12.0",
+    "react-navi": "^0.14.3",
+    "react-request-hook": "^2.1.1",
+    "react-scripts": "^3.3.0"
+  },
+  "scripts": {
+    "start": "npx concurrently \"npm:start-server\" \"npm:start-client\"",
+    "start-server": "npx json-server --watch server/db.json --port 4000 --routes server/routes.json",
+    "start-client": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "test-nowatch": "npx concurrently --kill-others --success \"first\" \"npm:start-server\" \"npm:test-client -- --watchAll=false\"",
+    "test-client": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
+```

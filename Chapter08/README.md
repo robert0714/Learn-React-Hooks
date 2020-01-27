@@ -49,3 +49,85 @@ https://www.youtube.com/watch?v=ZAq-WHcXwHA&list=PLeLcvrwLe187GQf0pQTtWTpppdjSAO
   ]
 }
 ```
+
+## Chapter 8-2 ~ 8-3
+
+Step 1  Creating a React skeleton .
+
+```bash
+npx create-react-app chapter8_2
+```
+
+Step 2 create sample folder and its index.js
+
+```bash
+mkdir -p src/examples
+vi examples/index.js
+```
+
+And the content of examples/index.js as seen below:
+
+```js
+import UsePrevious from './UsePrevious'
+import UseInterval from './UseInterval'
+import IntervalWithEffect from './IntervalWithEffect'
+import UseTimeout from './UseTimeout'
+import TimeoutWithEffect from './TimeoutWithEffect'
+import UseOnlineStatus from './UseOnlineStatus'
+import OnlineSync from './OnlineSync'
+import UseBoolean from './UseBoolean'
+import UseArray from './UseArray'
+import UseCounter from './UseCounter'
+import UseFocus from './UseFocus'
+import UseHover from './UseHover'
+
+export default {
+  UsePrevious,
+  UseInterval, IntervalWithEffect,
+  UseTimeout, TimeoutWithEffect,
+  UseOnlineStatus, OnlineSync,
+  UseBoolean, UseArray, UseCounter,
+  UseFocus, UseHover
+}
+```
+
+And then the src/App.js needs to be modified as below :
+
+```js
+import React, { useState } from 'react'
+
+import examples from './examples'
+
+const Example = ({ name, component }) => {
+  const [ active, setActive ] = useState(true)
+
+  function toggleActive () {
+    setActive(!active)
+  }
+
+  return (
+    <div>
+      <hr />
+      <h2>
+        {name}{' '}
+        <button onClick={toggleActive}>
+          {active ? 'unmount' : 'mount'}
+        </button>
+      </h2>
+      {active && React.createElement(component)}
+      <br />
+    </div>
+  )
+}
+
+export default function App () {
+  return (
+    <div>
+      <h1>React Hooks Examples</h1>
+      {Object.entries(examples).map(([ name, component ]) =>
+        <Example key={name} name={name} component={component} />
+      )}
+    </div>
+  )
+}
+```
